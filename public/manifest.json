@@ -1,0 +1,17 @@
+{
+  "name": "Rinascita - SoberFlow",
+  "short_name": "SoberFlow",
+  "description": "Monitora il tuo percorso di sobrietà.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3233/3233512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

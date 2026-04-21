@@ -1,6 +1,6 @@
 import { useState, useEffect, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Home, Settings as SettingsIcon, BarChart3, Bell } from 'lucide-react';
+import { Home, Settings as SettingsIcon, BarChart3, Bell, ShieldCheck } from 'lucide-react';
 import { loadSettings, saveSettings } from './lib/storage';
 import { UserSettings } from './types';
 import Dashboard from './components/Dashboard';
@@ -33,6 +33,21 @@ export default function App() {
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm -z-10" />
 
       <main className="pb-24 pt-8 px-4 max-w-lg mx-auto min-h-screen flex flex-col">
+        {/* Top Header Branding */}
+        <div className="flex items-center justify-between px-6 mb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+              {settings.appIcon ? (
+                <img src={settings.appIcon} alt="App Logo" className="w-full h-full object-cover" />
+              ) : (
+                <ShieldCheck size={16} className="text-emerald-500" />
+              )}
+            </div>
+            <span className="text-[10px] font-black uppercase tracking-[3px] text-slate-100">SoberFlow Vault</span>
+          </div>
+          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+        </div>
+
         <div className="glass rounded-[40px] p-6 flex-1 flex flex-col relative overflow-hidden">
           <AnimatePresence mode="wait">
             {activeTab === 'home' && (

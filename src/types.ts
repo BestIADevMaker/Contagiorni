@@ -6,6 +6,7 @@ export interface UserSettings {
   substances: Substance[];
   bgImage: string; // URL or base64
   appIcon: string; // URL or base64
+  userIcon: string; // emoji or icon name
   notificationFrequency: 'daily' | 'weekly' | 'milestones';
   message: string;
 }

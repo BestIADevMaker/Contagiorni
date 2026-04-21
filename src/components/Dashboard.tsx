@@ -3,7 +3,7 @@ import { intervalToDuration, formatDuration, differenceInDays } from 'date-fns';
 import { it } from 'date-fns/locale';
 import { UserSettings } from '../types';
 import { motion } from 'motion/react';
-import { Trophy } from 'lucide-react';
+import { Trophy, Lock } from 'lucide-react';
 
 interface DashboardProps {
   settings: UserSettings;
@@ -30,17 +30,32 @@ export default function Dashboard({ settings }: DashboardProps) {
       <motion.div 
         initial={{ opacity: 0, y: -20 }} 
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-2"
+        className="text-center space-y-4"
       >
-        <span className="px-3 py-1 bg-emerald-500/10 text-emerald-500 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-emerald-500/20">
-          Traguardo: Guerriero
-        </span>
-        <h2 className="text-2xl font-bold tracking-tight text-white mt-4">
-          Il tuo Percorso di Libertà
-        </h2>
-        <p className="text-slate-400 text-sm">
-          Sei libero da {settings.substances.join(', ')}
-        </p>
+        <div className="relative mx-auto w-24 h-24 mb-6">
+          <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full animate-pulse" />
+          <div className="relative w-full h-full rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-5xl shadow-2xl glass-card">
+            {settings.userIcon || '👤'}
+          </div>
+          {settings.appIcon && (
+            <motion.div 
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute -top-1 -right-1 w-10 h-10 rounded-xl overflow-hidden border-2 border-emerald-500 shadow-lg bg-slate-900"
+            >
+              <img src={settings.appIcon} alt="Logo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            </motion.div>
+          )}
+        </div>
+
+        <div className="space-y-1">
+          <h2 className="text-3xl font-black tracking-tight text-white uppercase italic">
+            {settings.name}
+          </h2>
+          <p className="text-[10px] font-black uppercase tracking-[4px] text-emerald-500">
+            Percorso di Libertà
+          </p>
+        </div>
       </motion.div>
 
       <div className="relative group">
@@ -79,14 +94,21 @@ export default function Dashboard({ settings }: DashboardProps) {
         </div>
       </div>
 
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="text-center italic text-slate-400 text-sm px-4"
-      >
-        "{settings.message}"
-      </motion.div>
+      <div className="flex flex-col items-center gap-4">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-center italic text-slate-400 text-sm px-4"
+        >
+          "{settings.message}"
+        </motion.div>
+
+        <div className="px-3 py-1.5 bg-black/40 border border-emerald-500/20 rounded-xl flex items-center gap-2">
+          <Lock size={12} className="text-emerald-500" />
+          <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-500">Criptato AES-256</span>
+        </div>
+      </div>
     </div>
   );
 }
