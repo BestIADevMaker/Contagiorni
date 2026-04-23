@@ -1,0 +1,59 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportHeight="108"
+    android:viewportWidth="108">
+
+    <!-- Sagoma Fenice (Ali e Corpo) -->
+    <path
+        android:pathData="M54,25 C45,25 40,30 40,35 C40,40 45,45 54,45 C63,45 68,40 68,35 C68,30 63,25 54,25 Z M20,50 C10,60 15,85 54,95 C93,85 98,60 88,50 C80,45 70,50 54,50 C38,50 28,45 20,50 Z"
+        android:strokeWidth="1">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="54"
+                android:endY="95"
+                android:startX="54"
+                android:startY="25"
+                android:type="linear">
+                <item android:color="#FFD700" android:offset="0.0" /> <!-- Oro (Testa) -->
+                <item android:color="#FF4500" android:offset="0.5" /> <!-- Arancio (Ali) -->
+                <item android:color="#8B0000" android:offset="1.0" /> <!-- Rosso scuro (Coda) -->
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Lettera N stilizzata -->
+    <path
+        android:pathData="M42,55 L42,75 M42,55 L52,75 L52,55"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FFFFFF" />
+
+    <!-- Lettera A stilizzata -->
+    <path
+        android:pathData="M58,75 L63,55 L68,75 M60,68 L66,68"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FFFFFF" />
+
+    <!-- Dettaglio fiamme laterali -->
+    <path
+        android:pathData="M30,60 C20,70 25,80 35,75 M78,60 C88,70 83,80 73,75"
+        android:strokeWidth="2"
+        android:strokeLineCap="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="20"
+                android:startY="60"
+                android:endX="88"
+                android:endY="80"
+                android:type="linear">
+                <item android:color="#FFFF00" android:offset="0.0" />
+                <item android:color="#FF4500" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Contagiorni</string>
+    <string name="title_activity_main">Contagiorni</string>
+    <string name="package_name">com.contagiorni.app</string>
+    <string name="custom_url_scheme">com.contagiorni.app</string>
+</resources>

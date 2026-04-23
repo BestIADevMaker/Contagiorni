@@ -16,11 +16,11 @@
 }
 
 body {
-  @apply bg-[#0f172a] text-slate-50 antialiased selection:bg-emerald-500 selection:text-white min-h-screen;
+  @apply bg-[#030712] text-slate-50 antialiased selection:bg-emerald-500 selection:text-white min-h-screen;
   background: 
-    radial-gradient(at 0% 0%, #1e293b 0, transparent 50%),
-    radial-gradient(at 100% 100%, #334155 0, transparent 50%),
-    radial-gradient(at 50% 50%, #1e1b4b 0, transparent 100%);
+    radial-gradient(at 0% 0%, #064e3b 0, transparent 40%),
+    radial-gradient(at 100% 100%, #1e1b4b 0, transparent 40%),
+    radial-gradient(at 50% 50%, #030712 0, transparent 100%);
   background-attachment: fixed;
 }
 

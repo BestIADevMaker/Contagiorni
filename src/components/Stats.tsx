@@ -2,7 +2,7 @@ import { differenceInDays, addDays, format, isAfter } from 'date-fns';
 import { it } from 'date-fns/locale';
 import { UserSettings, DEFAULT_MILESTONES } from '../types';
 import { motion } from 'motion/react';
-import { Milestone as MilestoneIcon, CheckCircle2, Circle } from 'lucide-react';
+import { Milestone as MilestoneIcon, CheckCircle2, Circle, TrendingDown, PiggyBank, Wallet } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 interface StatsProps {
@@ -76,6 +76,94 @@ export default function Stats({ settings }: StatsProps) {
           </div>
         </div>
       </section>
+
+      {settings.substances.includes('tabacco') && (
+        <section className="space-y-4">
+          <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 ml-4">
+            Risparmio Tabacco
+          </label>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="glass-card p-5 space-y-2">
+              <div className="flex items-center gap-2 text-emerald-500 mb-1">
+                <PiggyBank size={18} />
+                <span className="text-[10px] font-black uppercase tracking-tighter">Euro Risparmiati</span>
+              </div>
+              <p className="text-2xl font-black text-white italic">
+                € {((totalDays * (settings.cigPerDay || 0) / (settings.cigPerPack || 20)) * (settings.pricePerPack || 6)).toFixed(2)}
+              </p>
+              <p className="text-[9px] text-slate-400 leading-tight">
+                Basato su {(settings.cigPerDay || 0)} sigarette/die
+              </p>
+            </div>
+            <div className="glass-card p-5 space-y-2">
+              <div className="flex items-center gap-2 text-blue-400 mb-1">
+                <TrendingDown size={18} />
+                <span className="text-[10px] font-black uppercase tracking-tighter">Sigarette Evitate</span>
+              </div>
+              <p className="text-2xl font-black text-white italic">
+                {(totalDays * (settings.cigPerDay || 0)).toLocaleString()}
+              </p>
+              <p className="text-[9px] text-slate-400 leading-tight">
+                Respiri di libertà guadagnati
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {(settings.substances.includes('alcool') || settings.substances.includes('droghe')) && (
+        <section className="space-y-4">
+          <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 ml-4">
+            Altri Risparmi
+          </label>
+          <div className="grid grid-cols-1 gap-4">
+            {settings.substances.includes('alcool') && (
+              <div className="glass-card p-5 flex items-center justify-between border-blue-500/20">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 text-blue-400">
+                    <Wallet size={16} />
+                    <span className="text-[10px] font-black uppercase tracking-tighter">Alcool</span>
+                  </div>
+                  <p className="text-xl font-black text-white italic">
+                    € {(totalDays * (settings.alcDailyExpense || 0)).toFixed(2)}
+                  </p>
+                </div>
+                <div className="text-[9px] text-slate-500 uppercase font-bold text-right">
+                  Totale Risparmiato
+                </div>
+              </div>
+            )}
+            {settings.substances.includes('droghe') && (
+              <div className="glass-card p-5 flex items-center justify-between border-purple-500/20">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 text-purple-400">
+                    <Wallet size={16} />
+                    <span className="text-[10px] font-black uppercase tracking-tighter">Droghe</span>
+                  </div>
+                  <p className="text-xl font-black text-white italic">
+                    € {(totalDays * (settings.drugDailyExpense || 0)).toFixed(2)}
+                  </p>
+                </div>
+                <div className="text-[9px] text-slate-500 uppercase font-bold text-right">
+                  Totale Risparmiato
+                </div>
+              </div>
+            )}
+            <div className="glass-card p-4 bg-emerald-500/10 border-emerald-500/30">
+               <div className="flex justify-between items-center">
+                  <span className="text-[10px] font-black uppercase text-emerald-500">Risparmio Totale Combinato</span>
+                  <span className="text-lg font-black text-emerald-400">
+                    € {(
+                      (totalDays * (settings.cigPerDay || 0) / (settings.cigPerPack || 20)) * (settings.pricePerPack || 6) +
+                      (totalDays * (settings.alcDailyExpense || 0)) +
+                      (totalDays * (settings.drugDailyExpense || 0))
+                    ).toFixed(2)}
+                  </span>
+               </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="space-y-4">
         <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 ml-4">
